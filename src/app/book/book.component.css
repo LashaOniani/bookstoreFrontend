@@ -1,0 +1,55 @@
+.eachProduct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+button {    
+    cursor: pointer;
+    width: 2.8125rem;
+    height: 2.8125rem;
+    border-radius: 0.625rem;
+    background: #B3D4FF;
+    color:#2869CA;
+    font-size: 1.625rem;
+    font-weight: 700;
+    border: none;
+    outline: none;
+}
+
+.notactive{
+    border-radius: 0.625rem;
+    opacity: 0.2;
+    background: #B3D4FF;
+}
+
+input {
+    height: 2.81rem;
+    width: 6.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0.625rem;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#addToCart{
+    font-size: 1rem;
+    padding: 0;
+    margin-top: 1rem;
+    width: 100%;
+}

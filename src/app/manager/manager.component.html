@@ -1,0 +1,204 @@
+<div class="card">
+    <p-table
+      #dt
+      [value]="books"
+      [loading]="loading"
+      [paginator]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} books"
+      [globalFilterFields]="['id', 'book_name', 'author', 'price', 'quantity']"
+    >
+      <!-- Table Caption -->
+      <ng-template #caption>
+        <div class="flex justify-between">
+          <p-button
+            label="Clear Filters"
+            icon="pi pi-filter-slash"
+            (click)="clearFilters(dt)"
+          ></p-button>
+        </div>
+      </ng-template>
+  
+      <!-- Table Header -->
+      <ng-template #header>
+        <tr>
+          <th pSortableColumn="id">
+            <div class="flex justify-between items-center">
+              ID
+              <p-sortIcon field="id"></p-sortIcon>
+              <p-columnFilter
+                type="numeric"
+                field="id"
+                display="menu"
+                class="ml-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
+          
+          <th pSortableColumn="book_name">
+            <div class="flex justify-between items-center">
+              დასახელება
+              <p-sortIcon field="book_name"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="book_name"
+                display="menu"
+                class="ml-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th pSortableColumn="quantity">
+            <div class="flex justify-between items-center">
+              რაოდენობა
+              <p-sortIcon field="quantity"></p-sortIcon>
+              <p-columnFilter
+                type="numeric"
+                field="quantity"
+                display="menu"
+                class="ml-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th pSortableColumn="author">
+            <div class="flex justify-between items-center">
+              ავტორი
+              <p-sortIcon field="author"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="author"
+                display="menu"
+                class="ml-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+          <th pSortableColumn="price">
+            <div class="flex justify-between items-center">
+              ფასი
+              <p-sortIcon field="price"></p-sortIcon>
+              <p-columnFilter
+                type="numeric"
+                field="price"
+                display="menu"
+                class="ml-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
+
+        </tr>
+        
+      </ng-template>
+  
+      <ng-template #body let-book>
+        <tr>
+          <td>{{ book.id }}</td>
+          <td>
+            <span *ngIf="!book.isEditing"
+                   (click)="editBookName(book)" >
+                  {{book.book_name}}
+          </span>
+            <input *ngIf="book.isEditing" 
+                   [(ngModel)]="book.book_name" 
+                   (blur)="updateBook(book)" />
+          </td>
+          <td>
+            <span *ngIf="!book.isEditing"
+            (click)="editBookName(book)" >
+           {{book.author}}
+            </span>
+            <input *ngIf="book.isEditing" 
+                    [(ngModel)]="book.author" 
+                    (blur)="updateBook(book)" />
+            
+          </td>
+          <td>
+            
+            <span *ngIf="!book.isEditing"
+            (click)="editBookName(book)" >
+           {{book.price}}
+            </span>
+            <input *ngIf="book.isEditing" 
+                    [(ngModel)]="book.price" 
+                    (blur)="updateBook(book)" />
+                    ₾
+          </td>
+          <td>{{ book.quantity }}</td>
+        </tr>
+      </ng-template>
+  
+      <ng-template #emptymessage>
+        <tr>
+          <td colspan="5">No books found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  
+  <div class="card flex justify-center">
+    <p-button (click)="showDialog()" label="წიგნის დამატება" />
+    <p-dialog
+        [(visible)]="visible"
+        [modal]="true"
+        [style]="{ width: '25rem' }">
+            <ng-template #header>
+
+                <div class="inline-flex items-center justify-center gap-2">
+                    <span class="font-bold whitespace-nowrap">
+                        რედაქტირება
+                    </span>
+                </div>
+
+            </ng-template>
+            <form [formGroup]="saveBook" (ngSubmit)="addBook()">
+
+                <div class="flex items-center gap-4 mb-4">
+                    <label for="username" class="font-semibold w-24">
+                        დასახელება
+                    </label>
+                    <input type="text" id="username" class="flex-auto" autocomplete="off" formControlName="book_name" required/>
+                </div>
+
+                <div class="flex items-center gap-4 mb-8">
+                    <label for="author" class="font-semibold w-24">ავტორი</label>
+                    <input type="text" id="author" class="flex-auto" autocomplete="off" formControlName="author" required />
+                </div>
+                <div class="flex items-center gap-4 mb-8">
+                    <label for="price" class="font-semibold w-24">ფასი</label>
+                    <input type="number" id="price" class="flex-auto" autocomplete="off" formControlName="price" required/>
+                    <span>₾</span>
+                </div>
+                <div class="flex items-center gap-4 mb-8">
+                    <label for="quantity" class="font-semibold w-24">რაოდენობა</label>
+                    <p-button (click)="incrementQuantity()" label="+"/>
+                    <input type="number" id="quantity" class="flex-auto" autocomplete="off" formControlName="quantity" required/>
+                    <p-button (click)="decrementQuantity()" label="-" />
+                </div>
+
+            <button type="submit">Submit</button>
+            <button (click)="clearForm()" type="button">გასუფთავება</button>
+        </form>
+    </p-dialog>
+</div>
+
+<h1>შეკვეთები: </h1>
+<p-table [value]="userOrders" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template #header>
+      <tr>
+          <th>მომხმარებელი</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+      </tr>
+  </ng-template>
+  <ng-template #body let-product>
+      <tr>
+          <td>{{ product.customer }}</td>
+          <td>{{ product.book_name }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.order_total }} ₾</td>
+      </tr>
+  </ng-template>
+</p-table>

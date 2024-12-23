@@ -1,0 +1,15 @@
+.book-list > ul{
+    display: grid;
+    max-width: 88rem;
+    grid-template: 1fr 1fr 1fr/ 1fr 1fr 1fr;
+    column-gap: 6.31rem;
+    row-gap: 1.88rem;
+}
+li {
+    list-style-type: none;
+    width: 25rem;
+    height: 12.9375rem;
+    border-radius: 0.625rem;
+    border: 1px solid #B7D4FF;
+    background: #FFF;
+}
