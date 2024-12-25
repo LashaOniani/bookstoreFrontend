@@ -9,7 +9,7 @@
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} books"
       [globalFilterFields]="['id', 'book_name', 'author', 'price', 'quantity']"
     >
-      <!-- Table Caption -->
+      
       <ng-template #caption>
         <div class="flex justify-between">
           <p-button
@@ -20,7 +20,6 @@
         </div>
       </ng-template>
   
-      <!-- Table Header -->
       <ng-template #header>
         <tr>
           <th pSortableColumn="id">
@@ -117,8 +116,8 @@
           <td>
             
             <span *ngIf="!book.isEditing"
-            (click)="editBookName(book)" >
-           {{book.price}}
+              (click)="editBookName(book)" >
+            {{book.price}}
             </span>
             <input *ngIf="book.isEditing" 
                     [(ngModel)]="book.price" 
@@ -126,6 +125,7 @@
                     ₾
           </td>
           <td>{{ book.quantity }}</td>
+          <td><p-button label="წაშლა" icon="pi pi-times" severity="danger" (click)="deleteBook(book.id)"/></td>
         </tr>
       </ng-template>
   
@@ -184,7 +184,8 @@
 </div>
 
 <h1>შეკვეთები: </h1>
-<p-table [value]="userOrders" [tableStyle]="{ 'min-width': '50rem' }">
+
+<!-- <p-table [value]="userOrders" [tableStyle]="{ 'min-width': '50rem' }">
   <ng-template #header>
       <tr>
           <th>მომხმარებელი</th>
@@ -201,4 +202,10 @@
           <td>{{ product.order_total }} ₾</td>
       </tr>
   </ng-template>
-</p-table>
+</p-table> -->
+
+<div>
+  <ul *ngFor="let eachUserOrders of userOrders">
+    <app-manager-user-orders [eachUserOrders]="eachUserOrders" />
+  </ul>
+</div>

@@ -1,0 +1,13 @@
+<div>
+    <li class="eachUserOrders" (click)="searchUserOrders(eachUserOrders.customer)" *ngIf="eachUserOrders">
+        <span>{{eachUserOrders.customer}} ( {{eachUserOrders.quantity}} შეკვეთა )</span> 
+        <span [class]="!displayUserAllOrders ? 'displayUserAllOrders' : '' "><svg><use xlink:href="assets/svgs/icons.svg#arrow"></use></svg></span>
+    </li>
+
+    <ng-container *ngIf="displayUserAllOrders">
+        <ul *ngFor="let eachOrder of searchUserOrdersRes">
+            <app-manage-orders-table [eachOrder]="eachOrder"></app-manage-orders-table>
+        </ul>
+    </ng-container>
+
+</div>

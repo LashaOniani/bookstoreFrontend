@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="arrow" viewBox="0 0 10 6">
+        <path d="M5 2.55L1.55 6L0.5 4.95L5 0.45L9.5 4.95L8.45 6L5 2.55Z" fill="currentColor"/>
+    </symbol>
+</svg>

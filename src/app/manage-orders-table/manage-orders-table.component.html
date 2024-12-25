@@ -1,0 +1,46 @@
+<li
+[class]="eachOrder.order_status === 1 ? 'eachUserOrders b1 back1' : eachOrder.order_status === 2 ? 'eachUserOrders b2 back2' : eachOrder.order_status === 3 ? 'eachUserOrders b3 back3' : eachOrder.order_status === 4 ? 'eachUserOrders b4 back4' : 'eachUserOrders' "
+(click)="openOrder(eachOrder.customer, eachOrder.order_date)">
+    <span>{{eachOrder.customer}} ( {{eachOrder.quantity}} შეკვეთა )</span>
+    <span [class]="!openTableOfOrders ? 'displayUserAllOrders' : '' "><svg><use xlink:href="assets/svgs/icons.svg#arrow"></use></svg></span>
+</li>
+
+<ng-container *ngIf="openTableOfOrders">
+    <div [class]="eachOrder.order_status === 1 ? 'content-table b1' : eachOrder.order_status === 2 ? 'content-table b2' : eachOrder.order_status === 3 ? 'content-table b3' : eachOrder.order_status === 4 ? 'content-table b4' : 'content-table' ">
+
+        <p-table [value]="orderdProducts" [tableStyle]="{'max-width': '45rem'}">
+            <ng-template #header>
+                <tr>
+                    <th pSortableColumn="code" style="width:30%">
+                        დასახელება <p-sortIcon field="code" />
+                    </th>
+                    <th pSortableColumn="name" style="width:20%">
+                        რაოდენობა <p-sortIcon field="name" />
+                    </th>
+                    <th pSortableColumn="category" style="width:30%">
+                        ავტორი <p-sortIcon field="category" />
+                    </th>
+                    <th pSortableColumn="quantity" style="width:10%" title="იგულისმება წიგნის ფასის ნამრავლი რაოდენობაზე">
+                        ფასი <p-sortIcon field="quantity" />
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-product>
+                <tr>
+                    <td>{{ product.book_name }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.book_author }}</td>
+                    <td>{{ product.order_total }} ₾</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+        <ng-container>
+            <div class="table-btns" *ngIf="eachOrder.order_status === 1">
+                <p-button label="დადასტურება" icon="pi pi-check" severity="info" (click)="changeOrderStatus(3)"/>
+                <p-button label="გაუქმება" icon="pi pi-times" severity="danger" (click)="changeOrderStatus(2)"/>
+            </div>
+        </ng-container>
+    
+    </div>
+</ng-container>

@@ -7,6 +7,8 @@ export class OrdersModel
         public book_name ?: string,
         public customer ?: string,
         public order_total ?: string,
+        public order_status ?: number 
+
     )
     {
         

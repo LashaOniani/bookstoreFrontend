@@ -42,7 +42,11 @@ export class ManagerComponent {
       this.books = books;
       this.loading = false;
     });
-    this.orderservice.getOrders().subscribe(res => {
+    // this.orderservice.getOrders().subscribe(res => {
+    //   console.log(res)
+    //   this.userOrders = res
+    // })
+    this.orderservice.get_user_s_orders().subscribe((res) => {
       console.log(res)
       this.userOrders = res
     })
@@ -95,4 +99,8 @@ export class ManagerComponent {
     console.log('Saved book name:', book);
   }
   
+  deleteBook(bookId : any) : void {
+
+  }
+
 }

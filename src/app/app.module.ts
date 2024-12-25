@@ -18,6 +18,8 @@ import { MainComponent } from './main/main.component';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
+import { ManagerUserOrdersComponent } from './manager-user-orders/manager-user-orders.component';
+import { ManageOrdersTableComponent } from './manage-orders-table/manage-orders-table.component';
 
 provideAnimationsAsync(),
   providePrimeNG({
@@ -32,7 +34,9 @@ provideAnimationsAsync(),
     BookListComponent,
     BookComponent,
     ManagerComponent,
-    MainComponent
+    MainComponent,
+    ManagerUserOrdersComponent,
+    ManageOrdersTableComponent
   ],
   imports: [
     BrowserModule,
