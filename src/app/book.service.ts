@@ -54,6 +54,13 @@ export class BookService {
       .pipe();
   }
 
+  delete_book(id : number) : Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders()
+    }
+    return this.http.delete(`${this.baseUrl}Book/DeleteBook?book_id=${id}`, httpOptions)
+  }
+
   get bookList(): BookModel[] {
     return this.books;
   }

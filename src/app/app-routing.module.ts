@@ -3,12 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { BookListComponent } from './book-list/book-list.component';
 import { ManagerComponent } from './manager/manager.component';
 import { MainComponent } from './main/main.component';
+import { OperatorComponent } from './operator/operator.component';
+
 
 const routes: Routes = [
   
   { path: '', component: MainComponent},
   { path: 'user', component: BookListComponent },
-  { path: 'manager', component: ManagerComponent}
+  { path: 'manager', component: ManagerComponent},
+  { path: 'operator', component: OperatorComponent }
 
 ];
 

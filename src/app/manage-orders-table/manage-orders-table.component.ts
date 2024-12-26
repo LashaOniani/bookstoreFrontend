@@ -13,6 +13,7 @@ export class ManageOrdersTableComponent {
   @Input() eachOrder : OrdersModel = {}
   openTableOfOrders : boolean = false;
   orderdProducts : OrdersModel[] = []
+  totalPrice : number = 0;
 
   constructor(private orderService : OrdersService){
   }
@@ -24,6 +25,9 @@ export class ManageOrdersTableComponent {
       this.orderService.get_opened_order({...tempObj, customer: customer, order_date: order_date}).subscribe(res =>{
         // console.log(res)
         this.orderdProducts = res
+        for(let eachOrderedBook of res){
+          this.totalPrice += eachOrderedBook.order_total
+        }
         })
     }
 

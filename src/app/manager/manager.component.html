@@ -48,19 +48,6 @@
             </div>
           </th>
 
-          <th pSortableColumn="quantity">
-            <div class="flex justify-between items-center">
-              რაოდენობა
-              <p-sortIcon field="quantity"></p-sortIcon>
-              <p-columnFilter
-                type="numeric"
-                field="quantity"
-                display="menu"
-                class="ml-auto"
-              ></p-columnFilter>
-            </div>
-          </th>
-
           <th pSortableColumn="author">
             <div class="flex justify-between items-center">
               ავტორი
@@ -87,6 +74,18 @@
             </div>
           </th>
 
+          <th pSortableColumn="quantity">
+            <div class="flex justify-between items-center">
+              რაოდენობა
+              <p-sortIcon field="quantity"></p-sortIcon>
+              <p-columnFilter
+                type="numeric"
+                field="quantity"
+                display="menu"
+                class="ml-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
         </tr>
         
       </ng-template>

@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ApplicationConfig } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
@@ -18,8 +17,11 @@ import { MainComponent } from './main/main.component';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
+import { FloatLabel } from 'primeng/floatlabel';
+
 import { ManagerUserOrdersComponent } from './manager-user-orders/manager-user-orders.component';
 import { ManageOrdersTableComponent } from './manage-orders-table/manage-orders-table.component';
+import { OperatorComponent } from './operator/operator.component';
 
 provideAnimationsAsync(),
   providePrimeNG({
@@ -36,7 +38,8 @@ provideAnimationsAsync(),
     ManagerComponent,
     MainComponent,
     ManagerUserOrdersComponent,
-    ManageOrdersTableComponent
+    ManageOrdersTableComponent,
+    OperatorComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ provideAnimationsAsync(),
     FormsModule,
     ButtonModule,
     TableModule,
-    Dialog
+    Dialog,
+    FloatLabel
   ],
 
   providers: [

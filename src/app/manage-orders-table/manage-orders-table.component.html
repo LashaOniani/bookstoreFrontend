@@ -1,7 +1,7 @@
 <li
 [class]="eachOrder.order_status === 1 ? 'eachUserOrders b1 back1' : eachOrder.order_status === 2 ? 'eachUserOrders b2 back2' : eachOrder.order_status === 3 ? 'eachUserOrders b3 back3' : eachOrder.order_status === 4 ? 'eachUserOrders b4 back4' : 'eachUserOrders' "
 (click)="openOrder(eachOrder.customer, eachOrder.order_date)">
-    <span>{{eachOrder.customer}} ( {{eachOrder.quantity}} შეკვეთა )</span>
+    <span>{{eachOrder.customer}} ( {{eachOrder.quantity}} შეკვეთა ) - ( {{eachOrder.order_status === 1 ? 'დადასტურების მოლოდინში' : eachOrder.order_status === 2 ? 'უარყოფილი შეკვეთა' : eachOrder.order_status === 3 ? 'პროცესში მყოფი შეკვეთა' : 'ჩაბარებული შეკვეთა' }} )</span>
     <span [class]="!openTableOfOrders ? 'displayUserAllOrders' : '' "><svg><use xlink:href="assets/svgs/icons.svg#arrow"></use></svg></span>
 </li>
 
@@ -36,6 +36,7 @@
         </p-table>
 
         <ng-container>
+            <p>შეკვეთის სრული ღირებულება {{totalPrice}} ₾</p>
             <div class="table-btns" *ngIf="eachOrder.order_status === 1">
                 <p-button label="დადასტურება" icon="pi pi-check" severity="info" (click)="changeOrderStatus(3)"/>
                 <p-button label="გაუქმება" icon="pi pi-times" severity="danger" (click)="changeOrderStatus(2)"/>

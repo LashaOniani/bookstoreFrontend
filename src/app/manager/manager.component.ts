@@ -5,6 +5,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { OrdersService } from '../orders.service';
 import { OrdersModel } from '../Models/OrdersModel';
 
+import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manager',
@@ -28,7 +30,7 @@ export class ManagerComponent {
 
   quantityToDisplay : number = 0
 
-  constructor(private bookService: BookService, private fb: FormBuilder, private orderservice : OrdersService) {
+  constructor(private bookService: BookService, private fb: FormBuilder, private orderservice : OrdersService, private router : Router) {
     this.saveBook = this.fb.group({
       author: ['', [Validators.required]],
       book_name: ['', [Validators.required]],
@@ -68,7 +70,9 @@ export class ManagerComponent {
       ...this.saveBook.value
     }
 
-    this.bookService.addBook(tempObj).subscribe()
+    this.bookService.addBook(tempObj).subscribe(() => {
+      this.books.push(tempObj);
+    })
   }
 
 
@@ -100,7 +104,10 @@ export class ManagerComponent {
   }
   
   deleteBook(bookId : any) : void {
-
+    // this.books = []
+    this.bookService.delete_book(bookId).subscribe(() => {
+      this.bookService.getBooks().subscribe(res => this.books = res)
+    });
   }
 
 }
