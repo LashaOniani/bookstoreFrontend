@@ -36,10 +36,12 @@
         </p-table>
 
         <ng-container>
-            <p>შეკვეთის სრული ღირებულება {{totalPrice}} ₾</p>
-            <div class="table-btns" *ngIf="eachOrder.order_status === 1">
-                <p-button label="დადასტურება" icon="pi pi-check" severity="info" (click)="changeOrderStatus(3)"/>
-                <p-button label="გაუქმება" icon="pi pi-times" severity="danger" (click)="changeOrderStatus(2)"/>
+            <div class="total-main">
+                <p class="total"> <span class="inp txt">ჯამი</span> <span class="inp prc">{{totalPrice}}</span> <span class="inp val">₾</span></p>
+                <div class="table-btns" *ngIf="eachOrder.order_status === 1">
+                    <p-button class="p2button" label="დადასტურება" icon="pi pi-check" severity="info" (click)="changeOrderStatus(3)"/>
+                    <p-button class="p2button" label="გაუქმება" icon="pi pi-times" severity="danger" (click)="changeOrderStatus(2)"/>
+                </div>
             </div>
         </ng-container>
     

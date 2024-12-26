@@ -36,3 +36,17 @@ svg {
     width: 0.34688rem;
     height: 0.5625rem;
 }
+
+.p1button > button {
+    padding: 1rem 1.63rem;
+    color:#2869CA; 
+    border: none;
+    font-weight: bolder;
+    border-radius: 0.625rem;
+    background: #B7D4FF;
+}
+
+.table-btns > .p2button > button {
+   padding: 0.88rem 1.87rem;
+   margin-right: 0.62rem;
+}
