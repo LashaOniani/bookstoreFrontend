@@ -6,7 +6,9 @@
     padding: 0;
     font-family: "Mark GEO CAPS";
 }
-
+body{
+    background-color: #E4ECF9;
+}
 .eachUserOrders {
     width: 28rem;
     display: flex;
@@ -37,16 +39,85 @@ svg {
     height: 0.5625rem;
 }
 
-.p1button > button {
+.p1button>button {
     padding: 1rem 1.63rem;
-    color:#2869CA; 
+    color: #2869CA;
     border: none;
     font-weight: bolder;
     border-radius: 0.625rem;
     background: #B7D4FF;
 }
 
-.table-btns > .p2button > button {
-   padding: 0.88rem 1.87rem;
-   margin-right: 0.62rem;
+.table-btns>.p2button>button {
+    width: 12.875rem;
+    height: 2.8125rem;
+    margin-right: 0.62rem;
+}
+
+.p1button>.p-button>.p-button-label {
+    font-weight: bold;
+}
+
+.addbookbtn>button {
+    background-color: #2869CA;
+    color: white;
+}
+
+.inp>.p-button,
+.inp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    height: 2.8125rem;
+    /* margin-right: 0.5rem; */
+    border: none;
+}
+
+.val>.p-button,
+.val {
+    width: 2.8125rem;
+    background: #B3D4FF;
+    color: #2869CA;
+    font-size: 1.375rem;
+}
+
+.price-inp {
+    display: flex;
+}
+
+.p-dialog>div>div {
+    overflow: hidden;
+}
+
+.p-dialog-content>form>.inp-parent>.inp-container>input {
+    width: 23.75rem;
+    height: 2.8125rem;
+    border-radius: 0.625rem;
+    border: 1px solid #B3D4FF;
+}
+
+.p-resizable-handle {
+    display: none;
+}
+
+.p-dialog-content {
+    width: 44.2rem;
+    margin-bottom: 4.06rem;
+    margin-left: 3.19rem;
+    margin-right: 5.94rem;
+    /* border: 1px solid red; */
+    /* height: 0; */
+}
+
+.book-table-parent{
+    background-color: white;
+    padding-right: 15rem;
+    padding-left: 15rem;
+}
+
+.p-table-books > .p-datatable {
+    background-color: white;
+    /* border: 2px solid red; */
+    min-width: 88.81rem;
 }

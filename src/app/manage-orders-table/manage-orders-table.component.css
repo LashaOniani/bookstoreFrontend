@@ -8,17 +8,19 @@
 }
 
 .table-btns {
-    margin-top: 0.8rem;
     display: flex;
     justify-content: end;
+    align-items: center;
 }
 
 .content-table {
     margin: 1rem 5rem;
-    max-width: 35rem;
+    min-width: 47.3rem;
+    max-width: 47.3rem;
     padding: 0.6rem;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 0.6rem;
+    background-color: white;
     /* background-color: yellow; */
 }
 
@@ -64,27 +66,15 @@
 
 .total{
     display: flex;
-}
-
-.total > .inp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.625rem;
-    height: 2.8125rem;
-    margin-right: 0.5rem;
-}
-
-.val{
-    width: 2.8125rem;
-    background: #B3D4FF;
-    color: #2869CA;
-    font-size: 1.375rem;
+    width: 16.5rem;
+    justify-content: space-between;
+    margin-right: 3rem;
 }
 
 .total-main{
     display: flex;
     align-items: center;
+    margin-top: 1rem;
 }
 
 .prc{

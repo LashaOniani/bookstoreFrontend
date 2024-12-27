@@ -1,210 +1,206 @@
-<div class="card">
-    <p-table
-      #dt
-      [value]="books"
-      [loading]="loading"
-      [paginator]="true"
-      [rows]="10"
-      [showCurrentPageReport]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} books"
-      [globalFilterFields]="['id', 'book_name', 'author', 'price', 'quantity']"
-    >
-      
-      <ng-template #caption>
-        <div class="flex justify-between">
-          <p-button
-            label="Clear Filters"
-            icon="pi pi-filter-slash"
-            (click)="clearFilters(dt)"
-          ></p-button>
-        </div>
-      </ng-template>
-  
-      <ng-template #header>
-        <tr>
-          <th pSortableColumn="id">
-            <div class="flex justify-between items-center">
-              ID
-              <p-sortIcon field="id"></p-sortIcon>
-              <p-columnFilter
-                type="numeric"
-                field="id"
-                display="menu"
-                class="ml-auto"
-              ></p-columnFilter>
-            </div>
-          </th>
-          
-          <th pSortableColumn="book_name">
-            <div class="flex justify-between items-center">
-              დასახელება
-              <p-sortIcon field="book_name"></p-sortIcon>
-              <p-columnFilter
-                type="text"
-                field="book_name"
-                display="menu"
-                class="ml-auto"
-              ></p-columnFilter>
-            </div>
-          </th>
+<div class="manager-component-container">
+<!-- წიგნების ცხრილი -->
+  <div class="books-table">
+    <h4>
+      <span class="inp val hs">
+        <svg>
+          <use xlink:href="assets/svgs/icons.svg#list"></use>
+        </svg>
+      </span>
+      წიგნების ჩამონათვალი
+    </h4>
 
-          <th pSortableColumn="author">
-            <div class="flex justify-between items-center">
-              ავტორი
-              <p-sortIcon field="author"></p-sortIcon>
-              <p-columnFilter
-                type="text"
-                field="author"
-                display="menu"
-                class="ml-auto"
-              ></p-columnFilter>
-            </div>
-          </th>
+    <div class="book-table-parent">
 
-          <th pSortableColumn="price">
-            <div class="flex justify-between items-center">
-              ფასი
-              <p-sortIcon field="price"></p-sortIcon>
-              <p-columnFilter
-                type="numeric"
-                field="price"
-                display="menu"
-                class="ml-auto"
-              ></p-columnFilter>
-            </div>
-          </th>
+      <p-table #dt class="p-table-books" [value]="books" [loading]="loading" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} books"
+        [globalFilterFields]="['id', 'book_name', 'author', 'price', 'quantity']">
 
-          <th pSortableColumn="quantity">
-            <div class="flex justify-between items-center">
-              რაოდენობა
-              <p-sortIcon field="quantity"></p-sortIcon>
-              <p-columnFilter
-                type="numeric"
-                field="quantity"
-                display="menu"
-                class="ml-auto"
-              ></p-columnFilter>
-            </div>
-          </th>
-        </tr>
-        
-      </ng-template>
-  
-      <ng-template #body let-book>
-        <tr>
-          <td>{{ book.id }}</td>
-          <td>
-            <span *ngIf="!book.isEditing"
-                   (click)="editBookName(book)" >
-                  {{book.book_name}}
-          </span>
-            <input *ngIf="book.isEditing" 
-                   [(ngModel)]="book.book_name" 
-                   (blur)="updateBook(book)" />
-          </td>
-          <td>
-            <span *ngIf="!book.isEditing"
-            (click)="editBookName(book)" >
-           {{book.author}}
-            </span>
-            <input *ngIf="book.isEditing" 
-                    [(ngModel)]="book.author" 
-                    (blur)="updateBook(book)" />
-            
-          </td>
-          <td>
-            
-            <span *ngIf="!book.isEditing"
-              (click)="editBookName(book)" >
-            {{book.price}}
-            </span>
-            <input *ngIf="book.isEditing" 
-                    [(ngModel)]="book.price" 
-                    (blur)="updateBook(book)" />
-                    ₾
-          </td>
-          <td>{{ book.quantity }}</td>
-          <td><p-button label="წაშლა" icon="pi pi-times" severity="danger" (click)="deleteBook(book.id)"/></td>
-        </tr>
-      </ng-template>
-  
-      <ng-template #emptymessage>
-        <tr>
-          <td colspan="5">No books found.</td>
-        </tr>
-      </ng-template>
-    </p-table>
+        <!-- <ng-template #caption>
+          <div class="flex justify-between">
+            <p-button label="მოხსენი ფილტრები" icon="pi pi-filter-slash" (click)="clearFilters(dt)"></p-button>
+          </div>
+        </ng-template> -->
+
+        <ng-template #header>
+          <tr>
+            <th pSortableColumn="id">
+              <div class="flex justify-between items-center">
+                ID
+                <p-sortIcon field="id"></p-sortIcon>
+                <p-columnFilter type="numeric" field="id" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+
+            <th pSortableColumn="book_name">
+              <div class="flex justify-between items-center">
+                დასახელება
+                <p-sortIcon field="book_name"></p-sortIcon>
+                <p-columnFilter type="text" field="book_name" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+
+            <th pSortableColumn="author">
+              <div class="flex justify-between items-center">
+                ავტორი
+                <p-sortIcon field="author"></p-sortIcon>
+                <p-columnFilter type="text" field="author" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+
+            <th pSortableColumn="price">
+              <div class="flex justify-between items-center">
+                ფასი
+                <p-sortIcon field="price"></p-sortIcon>
+                <p-columnFilter type="numeric" field="price" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+
+            <th pSortableColumn="quantity">
+              <div class="flex justify-between items-center">
+                რაოდენობა
+                <p-sortIcon field="quantity"></p-sortIcon>
+                <p-columnFilter type="numeric" field="quantity" display="menu" class="ml-auto"></p-columnFilter>
+              </div>
+            </th>
+          </tr>
+
+        </ng-template>
+
+        <ng-template #body let-book>
+          <tr>
+            <td>{{ book.id }}</td>
+            <td>
+              <span *ngIf="!book.isEditing" (click)="editBookName(book)">
+                {{book.book_name}}
+              </span>
+              <input *ngIf="book.isEditing" [(ngModel)]="book.book_name" (blur)="updateBook(book)" />
+            </td>
+            <td>
+              <span *ngIf="!book.isEditing" (click)="editBookName(book)">
+                {{book.author}}
+              </span>
+              <input *ngIf="book.isEditing" [(ngModel)]="book.author" (blur)="updateBook(book)" />
+
+            </td>
+            <td>
+
+              <span *ngIf="!book.isEditing" (click)="editBookName(book)">
+                {{book.price}}
+              </span>
+              <input *ngIf="book.isEditing" [(ngModel)]="book.price" (blur)="updateBook(book)" />
+              ₾
+            </td>
+            <td>{{ book.quantity }}</td>
+            <td><p-button label="წაშლა" icon="pi pi-times" severity="danger" (click)="deleteBook(book.id)" /></td>
+          </tr>
+        </ng-template>
+
+        <ng-template #emptymessage>
+          <tr>
+            <td colspan="5">No books found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+    </div>
+
+
   </div>
-  
+
   <div class="add">
     <p-button class="p1button" (click)="showDialog()" label="+ წიგნის დამატება" />
-    <p-dialog
-        [(visible)]="visible"
-        [modal]="true"
-        [style]="{ width: '25rem' }">
-            <ng-template #header>
+    <div>
+      <p-dialog [(visible)]="visible" [modal]="true" [style]="{width: '53.125rem;'}">
+        <ng-template #header>
+          <div class="add-header">
+            <span class="header-text">
+              + წიგნის დამატება:
+            </span>
+          </div>
 
-                <div class="inline-flex items-center justify-center gap-2">
-                    <span class="font-bold whitespace-nowrap">
-                        რედაქტირება
-                    </span>
-                </div>
+        </ng-template>
+        <form [formGroup]="saveBook" (ngSubmit)="addBook()">
 
-            </ng-template>
-            <form [formGroup]="saveBook" (ngSubmit)="addBook()">
+          <div class="inp-parent">
 
-                <div class="flex items-center gap-4 mb-4">
-                    <label for="username" class="font-semibold w-24">
-                        დასახელება
-                    </label>
-                    <input type="text" id="username" class="flex-auto" autocomplete="off" formControlName="book_name" required/>
-                </div>
+            <div class="inp-container">
+              <label for="username" class="label">
+                დასახელება
+              </label>
+              <input class="inp-sty-1" type="text" id="username" placeholder="მიუთითეთ წიგნის დასახელება"
+                autocomplete="off" formControlName="book_name" required />
+            </div>
 
-                <div class="flex items-center gap-4 mb-8">
-                    <label for="author" class="font-semibold w-24">ავტორი</label>
-                    <input type="text" id="author" class="flex-auto" autocomplete="off" formControlName="author" required />
-                </div>
-                <div class="flex items-center gap-4 mb-8">
-                    <label for="price" class="font-semibold w-24">ფასი</label>
-                    <input type="number" id="price" class="flex-auto" autocomplete="off" formControlName="price" required/>
-                    <span>₾</span>
-                </div>
-                <div class="flex items-center gap-4 mb-8">
-                    <label for="quantity" class="font-semibold w-24">რაოდენობა</label>
-                    <p-button (click)="incrementQuantity()" label="+"/>
-                    <input type="number" id="quantity" class="flex-auto" autocomplete="off" formControlName="quantity" required/>
-                    <p-button (click)="decrementQuantity()" label="-" />
-                </div>
+            <div class="inp-container">
+              <label for="price" class="label">ფასი</label>
+              <div class="price-inp">
+                <input class="inp-sty-1" type="number" id="price" placeholder="წიგნის ფასი (1ც)" class="flex-auto"
+                  autocomplete="off" formControlName="price" required />
+                <span class="inp val">₾</span>
+              </div>
+            </div>
 
-            <button type="submit">Submit</button>
-            <button (click)="clearForm()" type="button">გასუფთავება</button>
+            <div class="inp-container">
+              <label for="author" class="label">ავტორი</label>
+              <input class="inp-sty-1" type="text" id="author" placeholder="მიუთითეთ წიგნის ავტორი" autocomplete="off"
+                formControlName="author" required />
+            </div>
+
+            <div class="inp-container">
+              <label for="quantity" class="label">რაოდენობა</label>
+              <div>
+                <p-button class="inp val" (click)="decrementQuantity()" label="-" />
+                <input class="inp-sty-1 num" placeholder="მიუთითეთ რაოდენობა" type="number" id="quantity"
+                  autocomplete="off" formControlName="quantity" required />
+                <p-button class="inp val" (click)="incrementQuantity()" label="+" />
+              </div>
+            </div>
+
+          </div>
+          <div class="add-btn-container">
+            <p-button class="p1button addbookbtn" icon="pi pi-check" type="submi" label="დამატება" />
+          </div>
+          <!-- <button type="submit">Submit</button> -->
+          <!-- this button will help if we want to reset the addbookform -->
+          <!-- <button (click)="clearForm()" type="button">გასუფთავება</button> -->
         </form>
-    </p-dialog>
-</div>
+      </p-dialog>
+    </div>
+  </div>
 
-<h1>შეკვეთები: </h1>
+  <!-- შეკვეთები -->
+  <h4 class="orders-header">
+    <span class="inp val hs">
+      <svg>
+        <use xlink:href="assets/svgs/icons.svg#list"></use>
+      </svg>
+    </span>
+    შეკვეთები:
+  </h4>
+  <!-- <p-table [value]="userOrders" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header>
+        <tr>
+            <th>მომხმარებელი</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-product>
+        <tr>
+            <td>{{ product.customer }}</td>
+            <td>{{ product.book_name }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.order_total }} ₾</td>
+        </tr>
+    </ng-template>
+  </p-table> -->
 
-<!-- <p-table [value]="userOrders" [tableStyle]="{ 'min-width': '50rem' }">
-  <ng-template #header>
-      <tr>
-          <th>მომხმარებელი</th>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Quantity</th>
-      </tr>
-  </ng-template>
-  <ng-template #body let-product>
-      <tr>
-          <td>{{ product.customer }}</td>
-          <td>{{ product.book_name }}</td>
-          <td>{{ product.quantity }}</td>
-          <td>{{ product.order_total }} ₾</td>
-      </tr>
-  </ng-template>
-</p-table> -->
+  <div class="orders-list">
+    <ul *ngFor="let eachUserOrders of userOrders">
+      <app-manager-user-orders [eachUserOrders]="eachUserOrders" />
+    </ul>
+  </div>
 
-<div>
-  <ul *ngFor="let eachUserOrders of userOrders">
-    <app-manager-user-orders [eachUserOrders]="eachUserOrders" />
-  </ul>
 </div>
