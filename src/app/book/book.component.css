@@ -53,3 +53,22 @@ input::-webkit-inner-spin-button {
     margin-top: 1rem;
     width: 100%;
 }
+
+h5{
+    color: #2869CA;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.book-about{
+    margin-left: 1.69rem;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+    height: 6.56rem;
+    justify-content: space-between;
+    margin-bottom: 0.62rem;
+    /* border: 1px solid red; */
+}

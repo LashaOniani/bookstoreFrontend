@@ -63,22 +63,3 @@
     font-weight: bold;
     background-color: #28a7468f;
 }
-
-.total{
-    display: flex;
-    width: 16.5rem;
-    justify-content: space-between;
-    margin-right: 3rem;
-}
-
-.total-main{
-    display: flex;
-    align-items: center;
-    margin-top: 1rem;
-}
-
-.prc{
-    width: 8.75rem;
-    height: 2.8125rem;
-    border: 1px solid #BBFFC9;
-}

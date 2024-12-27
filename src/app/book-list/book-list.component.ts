@@ -23,7 +23,7 @@ export class BookListComponent {
   customer = ''
   orderdBooksArray: any[] = [];
   bookList: boolean = true
-
+  
   orderTotal: number = 0
 
   ngOnInit(): void {
@@ -58,6 +58,9 @@ export class BookListComponent {
 
   closeModal(): void {
     this.bookList = !this.bookList
+    this.orderdBooksArray = []
+    this.customer = ''
+    this.orderTotal = 0
   }
 
   buy(): void {
@@ -73,4 +76,7 @@ export class BookListComponent {
     }
   }
 
+  routTo(param : string) : void {
+    this.route.navigate([param]);
+  }
 }

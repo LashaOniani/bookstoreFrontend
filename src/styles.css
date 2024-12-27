@@ -63,7 +63,7 @@ svg {
     color: white;
 }
 
-.inp>.p-button,
+.inp >.p-button,
 .inp {
     display: flex;
     justify-content: center;
@@ -110,7 +110,8 @@ svg {
     /* height: 0; */
 }
 
-.book-table-parent{
+.book-table-parent, 
+.order-table{
     background-color: white;
     padding-right: 15rem;
     padding-left: 15rem;
@@ -120,4 +121,53 @@ svg {
     background-color: white;
     /* border: 2px solid red; */
     min-width: 88.81rem;
+}
+
+.hs{
+    background-color: #2869CA;
+    margin-right: 1.25rem;
+}
+
+.hs > svg{
+    width: 1.125rem;
+    height: 1.30781rem;
+    color: white;
+}
+
+h4{
+    display: flex;
+    /* justify-content: center; */
+    padding-left: 15rem;
+    align-items: center;
+    margin-bottom: 1.88rem;
+}
+
+.cart > .p-button {
+    background-color: #2869CA;
+    width: 25rem;
+}
+
+.cart > .p-button:hover{
+    background-color: #2869ca77;
+}
+
+.total{
+    display: flex;
+    width: 16.5rem;
+    justify-content: space-between;
+    margin-right: 3rem;
+}
+
+.total-main{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    color: #429FFD;
+}
+
+.prc{
+    width: 8.75rem;
+    height: 2.8125rem;
+    background-color: white;
+    border: 1px solid #BBFFC9;
 }

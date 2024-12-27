@@ -4,19 +4,23 @@
         
         <img src="assets/pictures/default-book.png"/>
     </div>
-    <div>
-        
-        <h4>დასახელება: {{book.book_name}}</h4>
-        <h4>ავტორი: {{book.author}}</h4>
-        <h4>რაოდენობა: {{book.quantity}}</h4>
-        <h4>ფასი: {{book.price}}</h4>
-        
+    <div class="book-about">
+
+        <div class="book-info">
+
+            <h5><b>დასახელება:</b> {{book.book_name}}</h5>
+            <h5><b>ავტორი: </b> {{book.author}}</h5>
+            <h5><b>რაოდენობა:</b> {{book.quantity}}</h5>
+            <h5><b>ფასი:</b> {{book.price}} ₾</h5>
+        </div>
+            
         <div class="inputs">
 
-            <button [class]="quantityNumber === book.quantity ? 'notactive' : '' " (click)="plusOne()">+</button>
-            <input  type="number" [value]="quantityNumber">
             <button [class]="quantityNumber <= 0 ? 'notactive' : '' " (click)="minusOne()">-</button>
+            <input  type="number" [value]="quantityNumber">
+            <button [class]="quantityNumber === book.quantity ? 'notactive' : '' " (click)="plusOne()">+</button>
         </div>
+
         <button *ngIf="quantityNumber > 0 && customer" id="addToCart" (click)="addToCart(quantityNumber)">დაამატე კალათაში</button>
     </div>
 </div>

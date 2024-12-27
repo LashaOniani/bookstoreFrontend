@@ -66,12 +66,13 @@ export class ManagerComponent {
   addBook() : void {
 
     let tempObj : BookModel = {
-      id: 0,
+      id: this.books[this.books.length - 1].id + 1,
       ...this.saveBook.value
     }
 
     this.bookService.addBook(tempObj).subscribe(() => {
       this.books.push(tempObj);
+      this.visible = false;
     })
   }
 
@@ -110,4 +111,9 @@ export class ManagerComponent {
     });
   }
 
+
+  routTo(param : string) : void {
+    this.router.navigate([param]);
+  }
+  
 }

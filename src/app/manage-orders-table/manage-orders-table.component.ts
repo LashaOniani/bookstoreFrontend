@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { OrdersModel } from '../Models/OrdersModel';
 import { OrdersService } from '../orders.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-orders-table',
@@ -15,7 +16,7 @@ export class ManageOrdersTableComponent {
   orderdProducts : OrdersModel[] = []
   totalPrice : number = 0;
 
-  constructor(private orderService : OrdersService){
+  constructor(private orderService : OrdersService, private router : Router){
   }
 
   openOrder(customer : any, order_date : any) : void {
@@ -39,7 +40,7 @@ export class ManageOrdersTableComponent {
     let tempObj = {...this.eachOrder, order_status: statusNumber}
     // console.log(tempObj)
     this.orderService.update_order_status(tempObj).subscribe(() => {
-
+      window.location.reload();
     })
   }
 

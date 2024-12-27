@@ -21,7 +21,7 @@
                         ავტორი <p-sortIcon field="category" />
                     </th>
                     <th pSortableColumn="quantity" style="width:10%" title="იგულისმება წიგნის ფასის ნამრავლი რაოდენობაზე">
-                        ფასი <p-sortIcon field="quantity" />
+                        ფასი ₾<p-sortIcon field="quantity" />
                     </th>
                 </tr>
             </ng-template>
@@ -37,7 +37,7 @@
 
         <ng-container>
             <div class="total-main">
-                <p class="total"> <span class="inp txt">ჯამი</span> <span class="inp prc" title="Georgian Lari">{{totalPrice}}</span> <span class="inp val">₾</span></p>
+                <p class="total"> <span class="inp txt">ჯამი: </span> <span class="inp prc" title="Georgian Lari">{{totalPrice}}</span> <span class="inp val">₾</span></p>
                 <div class="table-btns" *ngIf="eachOrder.order_status === 1">
                     <p-button class="p2button" label="დადასტურება" icon="pi pi-check" severity="info" (click)="changeOrderStatus(3)"/>
                     <p-button class="p2button" label="გაუქმება" icon="pi pi-times" severity="danger" (click)="changeOrderStatus(2)"/>

@@ -75,24 +75,6 @@ input::-webkit-inner-spin-button {
     padding-left:1.25rem;
 }
 
-.hs{
-    background-color: #2869CA;
-    margin-right: 1.25rem;
-}
-
-.hs > svg{
-    width: 1.125rem;
-    height: 1.30781rem;
-    color: white;
-}
-
-h4{
-    display: flex;
-    /* justify-content: center; */
-    padding-left: 15rem;
-    align-items: center;
-    margin-bottom: 1.88rem;
-}
 .orders-header{
     background-color: #2869CA;
     height: 5rem;
